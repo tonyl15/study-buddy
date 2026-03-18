@@ -7,6 +7,7 @@ import { formatTime } from "@/components/StopwatchDisplay";
 
 interface StudyLogTableProps {
   logs: StudyLogEntry[];
+  subjectColors?: Record<string, string>;
   onUpdate: (logId: string, updates: Partial<Pick<StudyLogEntry, "startTime" | "endTime">>) => void;
   onDelete: (logId: string) => void;
 }
