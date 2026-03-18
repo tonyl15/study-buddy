@@ -308,7 +308,16 @@ const TrackerView: React.FC<TrackerViewProps> = ({
         {/* Study Log */}
         <div className="space-y-3">
           <h2 className="text-sm font-semibold text-foreground">Session Log — Week {selectedWeek}</h2>
-          <StudyLogTable logs={weekLogs} onUpdate={onUpdateLog} onDelete={onDeleteLog} />
+          <StudyLogTable
+            logs={weekLogs}
+            subjectColors={
+              tracker.mode === "uni"
+                ? Object.fromEntries(tracker.subjects.map((s, i) => [s.name, SUBJECT_COLORS[i % SUBJECT_COLORS.length]]))
+                : {}
+            }
+            onUpdate={onUpdateLog}
+            onDelete={onDeleteLog}
+          />
         </div>
       </div>
     </div>
