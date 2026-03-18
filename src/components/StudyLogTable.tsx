@@ -7,6 +7,7 @@ import { formatTime } from "@/components/StopwatchDisplay";
 
 interface StudyLogTableProps {
   logs: StudyLogEntry[];
+  subjectColors?: Record<string, string>;
   onUpdate: (logId: string, updates: Partial<Pick<StudyLogEntry, "startTime" | "endTime">>) => void;
   onDelete: (logId: string) => void;
 }
@@ -27,7 +28,7 @@ function formatDisplay(iso: string): string {
   });
 }
 
-const StudyLogTable: React.FC<StudyLogTableProps> = ({ logs, onUpdate, onDelete }) => {
+const StudyLogTable: React.FC<StudyLogTableProps> = ({ logs, subjectColors = {}, onUpdate, onDelete }) => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editStart, setEditStart] = useState("");
   const [editEnd, setEditEnd] = useState("");
@@ -100,7 +101,21 @@ const StudyLogTable: React.FC<StudyLogTableProps> = ({ logs, onUpdate, onDelete 
               <div className="flex items-center gap-3">
                 <div className="flex-1 min-w-0">
                   {log.subjectName && (
-                    <span className="text-xs font-medium text-primary">{log.subjectName} · </span>
+                    <span
+                      className="inline-flex items-center gap-1 text-xs font-medium px-2 py-0.5 rounded mr-2"
+                      style={{
+                        backgroundColor: subjectColors[log.subjectName]
+                          ? `${subjectColors[log.subjectName]}22`
+                          : undefined,
+                        color: subjectColors[log.subjectName] || 'hsl(var(--primary))',
+                      }}
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full shrink-0"
+                        style={{ backgroundColor: subjectColors[log.subjectName] || 'hsl(var(--primary))' }}
+                      />
+                      {log.subjectName}
+                    </span>
                   )}
                   <span className="text-xs text-muted-foreground">
                     {formatDisplay(log.startTime)} → {formatDisplay(log.endTime)}
