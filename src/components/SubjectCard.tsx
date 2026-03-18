@@ -62,9 +62,6 @@ const SubjectCard: React.FC<SubjectCardProps> = ({
             <Play className="w-3 h-3" /> Start
           </Button>
         )}
-        <Button size="sm" variant="ghost" onClick={onReset}>
-          <RotateCcw className="w-3 h-3" />
-        </Button>
       </div>
     </div>
   );
