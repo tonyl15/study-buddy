@@ -28,7 +28,7 @@ function formatDisplay(iso: string): string {
   });
 }
 
-const StudyLogTable: React.FC<StudyLogTableProps> = ({ logs, onUpdate, onDelete }) => {
+const StudyLogTable: React.FC<StudyLogTableProps> = ({ logs, subjectColors = {}, onUpdate, onDelete }) => {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editStart, setEditStart] = useState("");
   const [editEnd, setEditEnd] = useState("");
