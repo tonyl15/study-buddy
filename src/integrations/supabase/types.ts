@@ -14,7 +14,101 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          created_at: string
+          display_name: string | null
+          id: string
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id: string
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          created_at?: string
+          display_name?: string | null
+          id?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      study_logs: {
+        Row: {
+          created_at: string
+          end_time: string
+          id: string
+          start_time: string
+          subject_name: string | null
+          tracker_id: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          end_time: string
+          id?: string
+          start_time: string
+          subject_name?: string | null
+          tracker_id: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          end_time?: string
+          id?: string
+          start_time?: string
+          subject_name?: string | null
+          tracker_id?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_logs_tracker_id_fkey"
+            columns: ["tracker_id"]
+            isOneToOne: false
+            referencedRelation: "trackers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      trackers: {
+        Row: {
+          created_at: string
+          goal_hours: number
+          id: string
+          mode: string
+          name: string
+          start_date: string
+          subjects: Json
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          goal_hours?: number
+          id?: string
+          mode?: string
+          name: string
+          start_date?: string
+          subjects?: Json
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          goal_hours?: number
+          id?: string
+          mode?: string
+          name?: string
+          start_date?: string
+          subjects?: Json
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
