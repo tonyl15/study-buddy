@@ -37,7 +37,7 @@ const Auth = () => {
       if (sanitized) {
         const result = displayNameSchema.safeParse(sanitized);
         if (!result.success) {
-          toast.error(result.error.errors[0].message);
+          toast.error(result.error.issues[0].message);
           setSubmitting(false);
           return;
         }
