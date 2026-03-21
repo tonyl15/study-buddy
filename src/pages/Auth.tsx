@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { displayNameSchema, sanitizeDisplayName } from "@/lib/profile-validation";
 
 const Auth = () => {
   const { user, loading, signIn, signUp } = useAuth();
@@ -31,7 +32,17 @@ const Auth = () => {
       const { error } = await signIn(email, password);
       if (error) toast.error(error.message);
     } else {
-      const { error } = await signUp(email, password, displayName || undefined);
+      // Validate & sanitize display name
+      const sanitized = displayName ? sanitizeDisplayName(displayName) : undefined;
+      if (sanitized) {
+        const result = displayNameSchema.safeParse(sanitized);
+        if (!result.success) {
+          toast.error(result.error.issues[0].message);
+          setSubmitting(false);
+          return;
+        }
+      }
+      const { error } = await signUp(email, password, sanitized);
       if (error) toast.error(error.message);
       else toast.success("Account created! You're now signed in.");
     }
