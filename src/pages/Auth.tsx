@@ -32,7 +32,17 @@ const Auth = () => {
       const { error } = await signIn(email, password);
       if (error) toast.error(error.message);
     } else {
-      const { error } = await signUp(email, password, displayName || undefined);
+      // Validate & sanitize display name
+      const sanitized = displayName ? sanitizeDisplayName(displayName) : undefined;
+      if (sanitized) {
+        const result = displayNameSchema.safeParse(sanitized);
+        if (!result.success) {
+          toast.error(result.error.errors[0].message);
+          setSubmitting(false);
+          return;
+        }
+      }
+      const { error } = await signUp(email, password, sanitized);
       if (error) toast.error(error.message);
       else toast.success("Account created! You're now signed in.");
     }
