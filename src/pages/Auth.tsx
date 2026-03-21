@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { displayNameSchema, sanitizeDisplayName } from "@/lib/profile-validation";
 
 const Auth = () => {
   const { user, loading, signIn, signUp } = useAuth();
