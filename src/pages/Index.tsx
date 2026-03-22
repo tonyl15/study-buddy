@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useTrackers } from "@/hooks/useTrackers";
-import { Tracker } from "@/types/tracker";
+import { StudyLogEntry } from "@/types/tracker";
 import TrackerList from "@/components/TrackerList";
 import TrackerView from "@/components/TrackerView";
 import StudyCoach from "@/components/StudyCoach";
