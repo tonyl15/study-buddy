@@ -10,7 +10,7 @@ import { LogOut, Sparkles } from "lucide-react";
 import { exampleTracker } from "@/data/exampleTracker";
 
 const Index = () => {
-  const { trackers, loading, createTracker, deleteTracker, addLog, updateLog, deleteLog, refresh } = useTrackers();
+  const { trackers, loading, createTracker, deleteTracker, addLog, updateLog, deleteLog } = useTrackers();
   const allTrackers = [exampleTracker, ...trackers];
   const { signOut, user } = useAuth();
   const [activeTrackerId, setActiveTrackerId] = useState<string | null>(null);
