@@ -64,7 +64,7 @@ const Index = () => {
         </Button>
       </div>
       <TrackerList
-        trackers={trackers}
+        trackers={allTrackers}
         onSelect={(t) => setActiveTrackerId(t.id)}
         onCreate={async (name, mode, goalHours, subjects) => {
           const t = await createTracker(name, mode, goalHours, subjects);
