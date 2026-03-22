@@ -29,6 +29,7 @@ interface TrackerViewProps {
   onAddLog: (log: StudyLogEntry) => void;
   onUpdateLog: (logId: string, updates: Partial<Pick<StudyLogEntry, "startTime" | "endTime">>) => void;
   onDeleteLog: (logId: string) => void;
+  readOnly?: boolean;
 }
 
 const TrackerView: React.FC<TrackerViewProps> = ({
