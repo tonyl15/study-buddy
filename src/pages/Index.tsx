@@ -7,9 +7,11 @@ import StudyCoach from "@/components/StudyCoach";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sparkles } from "lucide-react";
+import { exampleTracker } from "@/data/exampleTracker";
 
 const Index = () => {
   const { trackers, loading, createTracker, deleteTracker, addLog, updateLog, deleteLog, refresh } = useTrackers();
+  const allTrackers = [exampleTracker, ...trackers];
   const { signOut, user } = useAuth();
   const [activeTrackerId, setActiveTrackerId] = useState<string | null>(null);
   const [showCoach, setShowCoach] = useState(false);
