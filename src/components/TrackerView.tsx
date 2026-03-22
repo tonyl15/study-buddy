@@ -274,7 +274,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
         </div>
 
         {/* Uni mode subject cards — only on current week */}
-        {tracker.mode === "uni" && isCurrentWeek && (
+        {tracker.mode === "uni" && isCurrentWeek && !readOnly && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {tracker.subjects.map((sub, i) => (
               <SubjectCard

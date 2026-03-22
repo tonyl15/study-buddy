@@ -70,7 +70,7 @@ const Index = () => {
           const t = await createTracker(name, mode, goalHours, subjects);
           if (t) setActiveTrackerId(t.id);
         }}
-        onDelete={deleteTracker}
+        onDelete={(id) => { if (id !== "example-tracker") deleteTracker(id); }}
       />
     </div>
   );
