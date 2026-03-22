@@ -38,6 +38,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
   onAddLog,
   onUpdateLog,
   onDeleteLog,
+  readOnly = false,
 }) => {
   const currentWeek = getWeekNumber(tracker.startDate, new Date());
   const [selectedWeek, setSelectedWeek] = useState(currentWeek);
