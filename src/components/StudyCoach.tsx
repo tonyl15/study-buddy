@@ -241,7 +241,7 @@ const StudyCoach: React.FC<StudyCoachProps> = ({ trackers, onBack }) => {
           </Button>
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-primary" />
-            <h1 className="text-xl font-bold text-foreground">Study Coach</h1>
+            <h1 className="text-xl font-bold text-foreground">Study Buddy</h1>
           </div>
         </div>
 
