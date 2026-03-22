@@ -56,7 +56,7 @@ const Index = () => {
           className="gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5" />
-          Study Coach
+          Study Buddy
         </Button>
         <span className="text-xs text-muted-foreground hidden sm:inline">{user?.email}</span>
         <Button variant="ghost" size="icon" onClick={signOut} className="h-8 w-8">
