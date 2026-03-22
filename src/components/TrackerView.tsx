@@ -255,7 +255,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
           </ProgressRing>
 
           {/* Standard mode controls — only on current week */}
-          {tracker.mode === "standard" && isCurrentWeek && (
+          {tracker.mode === "standard" && isCurrentWeek && !readOnly && (
             <div className="flex items-center gap-3">
               {stdRunning ? (
                 <Button onClick={stopStd} size="lg" variant="outline" className="gap-2">
