@@ -38,9 +38,10 @@ const Index = () => {
       <TrackerView
         tracker={liveTracker}
         onBack={() => setActiveTrackerId(null)}
-        onAddLog={(log) => addLog(liveTracker.id, log)}
-        onUpdateLog={(logId, updates) => updateLog(liveTracker.id, logId, updates)}
-        onDeleteLog={(logId) => deleteLog(liveTracker.id, logId)}
+        onAddLog={isExample ? () => {} : (log) => addLog(liveTracker.id, log)}
+        onUpdateLog={isExample ? () => {} : (logId, updates) => updateLog(liveTracker.id, logId, updates)}
+        onDeleteLog={isExample ? () => {} : (logId) => deleteLog(liveTracker.id, logId)}
+        readOnly={isExample}
       />
     );
   }
