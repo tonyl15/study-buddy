@@ -6,7 +6,7 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `You are an AI Study Coach for a study tracking app. You analyze students' study session data and provide actionable, personalized advice.
+const SYSTEM_PROMPT = `You are an AI Study Buddy for a study tracking app. You analyze students' study session data and provide actionable, personalized advice.
 
 Your capabilities:
 1. **Pattern Analysis** – Identify when students study most/least, which subjects get neglected, and consistency trends.

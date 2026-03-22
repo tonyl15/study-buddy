@@ -29,6 +29,7 @@ interface TrackerViewProps {
   onAddLog: (log: StudyLogEntry) => void;
   onUpdateLog: (logId: string, updates: Partial<Pick<StudyLogEntry, "startTime" | "endTime">>) => void;
   onDeleteLog: (logId: string) => void;
+  readOnly?: boolean;
 }
 
 const TrackerView: React.FC<TrackerViewProps> = ({
@@ -37,6 +38,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
   onAddLog,
   onUpdateLog,
   onDeleteLog,
+  readOnly = false,
 }) => {
   const currentWeek = getWeekNumber(tracker.startDate, new Date());
   const [selectedWeek, setSelectedWeek] = useState(currentWeek);
@@ -253,7 +255,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
           </ProgressRing>
 
           {/* Standard mode controls — only on current week */}
-          {tracker.mode === "standard" && isCurrentWeek && (
+          {tracker.mode === "standard" && isCurrentWeek && !readOnly && (
             <div className="flex items-center gap-3">
               {stdRunning ? (
                 <Button onClick={stopStd} size="lg" variant="outline" className="gap-2">
@@ -272,7 +274,7 @@ const TrackerView: React.FC<TrackerViewProps> = ({
         </div>
 
         {/* Uni mode subject cards — only on current week */}
-        {tracker.mode === "uni" && isCurrentWeek && (
+        {tracker.mode === "uni" && isCurrentWeek && !readOnly && (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {tracker.subjects.map((sub, i) => (
               <SubjectCard

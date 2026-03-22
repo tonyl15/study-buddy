@@ -241,7 +241,7 @@ const StudyCoach: React.FC<StudyCoachProps> = ({ trackers, onBack }) => {
           </Button>
           <div className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-primary" />
-            <h1 className="text-xl font-bold text-foreground">Study Coach</h1>
+            <h1 className="text-xl font-bold text-foreground">Study Buddy</h1>
           </div>
         </div>
 
@@ -251,7 +251,7 @@ const StudyCoach: React.FC<StudyCoachProps> = ({ trackers, onBack }) => {
             <div className="flex flex-col items-center justify-center h-full text-center space-y-3 text-muted-foreground">
               <Sparkles className="w-10 h-10 text-primary/40" />
               <p className="text-sm max-w-sm">
-                Hi! I'm your AI Study Coach. Ask me about your study habits, and I'll analyze your
+                Hi! I'm your AI Study Buddy. Ask me about your study habits, and I'll analyze your
                 data to give personalized advice and optimal study/break intervals.
               </p>
               <div className="flex flex-wrap gap-2 justify-center">

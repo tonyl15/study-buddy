@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { useTrackers } from "@/hooks/useTrackers";
-import { Tracker } from "@/types/tracker";
+import { StudyLogEntry } from "@/types/tracker";
 import TrackerList from "@/components/TrackerList";
 import TrackerView from "@/components/TrackerView";
 import StudyCoach from "@/components/StudyCoach";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
 import { LogOut, Sparkles } from "lucide-react";
+import { exampleTracker } from "@/data/exampleTracker";
 
 const Index = () => {
-  const { trackers, loading, createTracker, deleteTracker, addLog, updateLog, deleteLog, refresh } = useTrackers();
+  const { trackers, loading, createTracker, deleteTracker, addLog, updateLog, deleteLog } = useTrackers();
+  const allTrackers = [exampleTracker, ...trackers];
   const { signOut, user } = useAuth();
   const [activeTrackerId, setActiveTrackerId] = useState<string | null>(null);
   const [showCoach, setShowCoach] = useState(false);
 
   const liveTracker = activeTrackerId
-    ? trackers.find((t) => t.id === activeTrackerId) ?? null
+    ? allTrackers.find((t) => t.id === activeTrackerId) ?? null
     : null;
+  const isExample = activeTrackerId === "example-tracker";
 
   if (loading) {
     return (
@@ -27,7 +30,7 @@ const Index = () => {
   }
 
   if (showCoach) {
-    return <StudyCoach trackers={trackers} onBack={() => setShowCoach(false)} />;
+    return <StudyCoach trackers={allTrackers} onBack={() => setShowCoach(false)} />;
   }
 
   if (liveTracker) {
@@ -35,9 +38,10 @@ const Index = () => {
       <TrackerView
         tracker={liveTracker}
         onBack={() => setActiveTrackerId(null)}
-        onAddLog={(log) => addLog(liveTracker.id, log)}
-        onUpdateLog={(logId, updates) => updateLog(liveTracker.id, logId, updates)}
-        onDeleteLog={(logId) => deleteLog(liveTracker.id, logId)}
+        onAddLog={isExample ? () => {} : (log) => addLog(liveTracker.id, log)}
+        onUpdateLog={isExample ? () => {} : (logId, updates) => updateLog(liveTracker.id, logId, updates)}
+        onDeleteLog={isExample ? () => {} : (logId) => deleteLog(liveTracker.id, logId)}
+        readOnly={isExample}
       />
     );
   }
@@ -52,7 +56,7 @@ const Index = () => {
           className="gap-1.5"
         >
           <Sparkles className="w-3.5 h-3.5" />
-          Study Coach
+          Study Buddy
         </Button>
         <span className="text-xs text-muted-foreground hidden sm:inline">{user?.email}</span>
         <Button variant="ghost" size="icon" onClick={signOut} className="h-8 w-8">
@@ -60,13 +64,13 @@ const Index = () => {
         </Button>
       </div>
       <TrackerList
-        trackers={trackers}
+        trackers={allTrackers}
         onSelect={(t) => setActiveTrackerId(t.id)}
         onCreate={async (name, mode, goalHours, subjects) => {
           const t = await createTracker(name, mode, goalHours, subjects);
           if (t) setActiveTrackerId(t.id);
         }}
-        onDelete={deleteTracker}
+        onDelete={(id) => { if (id !== "example-tracker") deleteTracker(id); }}
       />
     </div>
   );
