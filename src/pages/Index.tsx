@@ -30,7 +30,7 @@ const Index = () => {
   }
 
   if (showCoach) {
-    return <StudyCoach trackers={trackers} onBack={() => setShowCoach(false)} />;
+    return <StudyCoach trackers={allTrackers} onBack={() => setShowCoach(false)} />;
   }
 
   if (liveTracker) {
