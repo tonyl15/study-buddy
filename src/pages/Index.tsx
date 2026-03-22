@@ -17,8 +17,9 @@ const Index = () => {
   const [showCoach, setShowCoach] = useState(false);
 
   const liveTracker = activeTrackerId
-    ? trackers.find((t) => t.id === activeTrackerId) ?? null
+    ? allTrackers.find((t) => t.id === activeTrackerId) ?? null
     : null;
+  const isExample = activeTrackerId === "example-tracker";
 
   if (loading) {
     return (
