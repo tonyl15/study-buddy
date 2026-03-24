@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Play, Square, RotateCcw } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Play, Square, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProgressRing from "@/components/ProgressRing";
 import StopwatchDisplay from "@/components/StopwatchDisplay";
