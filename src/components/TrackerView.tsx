@@ -5,6 +5,7 @@ import ProgressRing from "@/components/ProgressRing";
 import StopwatchDisplay from "@/components/StopwatchDisplay";
 import SubjectCard from "@/components/SubjectCard";
 import StudyLogTable from "@/components/StudyLogTable";
+import StudyCoach from "@/components/StudyCoach";
 import {
   Tracker,
   StudyLogEntry,
