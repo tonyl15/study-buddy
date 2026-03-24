@@ -3,10 +3,9 @@ import { useTrackers } from "@/hooks/useTrackers";
 import { StudyLogEntry } from "@/types/tracker";
 import TrackerList from "@/components/TrackerList";
 import TrackerView from "@/components/TrackerView";
-import StudyCoach from "@/components/StudyCoach";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
-import { LogOut, Sparkles } from "lucide-react";
+import { LogOut } from "lucide-react";
 import { exampleTracker } from "@/data/exampleTracker";
 
 const Index = () => {
