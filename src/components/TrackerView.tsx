@@ -1,10 +1,11 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
-import { ArrowLeft, ChevronLeft, ChevronRight, Play, Square, RotateCcw } from "lucide-react";
+import { ArrowLeft, ChevronLeft, ChevronRight, Play, Square, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ProgressRing from "@/components/ProgressRing";
 import StopwatchDisplay from "@/components/StopwatchDisplay";
 import SubjectCard from "@/components/SubjectCard";
 import StudyLogTable from "@/components/StudyLogTable";
+import StudyCoach from "@/components/StudyCoach";
 import {
   Tracker,
   StudyLogEntry,
@@ -320,6 +321,15 @@ const TrackerView: React.FC<TrackerViewProps> = ({
             onUpdate={onUpdateLog}
             onDelete={onDeleteLog}
           />
+        </div>
+
+        {/* Study Buddy */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <h2 className="text-sm font-semibold text-foreground">Study Buddy</h2>
+          </div>
+          <StudyCoach tracker={tracker} />
         </div>
       </div>
     </div>
