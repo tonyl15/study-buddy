@@ -322,6 +322,15 @@ const TrackerView: React.FC<TrackerViewProps> = ({
             onDelete={onDeleteLog}
           />
         </div>
+
+        {/* Study Buddy */}
+        <div className="space-y-3">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 text-primary" />
+            <h2 className="text-sm font-semibold text-foreground">Study Buddy</h2>
+          </div>
+          <StudyCoach tracker={tracker} />
+        </div>
       </div>
     </div>
   );
